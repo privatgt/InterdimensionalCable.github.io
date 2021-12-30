@@ -1,4 +1,4 @@
 # InterdimensionalCable
 Just showing random videos from r/InterdimensionalCable
 
-[Open Random Video](./index.html)
+[Open Random Video](./videos.html)
