@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>interdimensionalcable</title>
+</head>
+  <body>
+    <center>
+      <p>Random Videos From r/interdimensionalcable</p>
+      <div id="player"></div>
+    </center>
+
+    <script>
+      var tag = document.createElement('script'); 
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      var ctr = 0;
+      function onYouTubeIframeAPIReady() {
+        fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
+    .then(response => response.json())
+    .then(data =>{
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0],
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    });
+        
+      }
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        
+      }
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          //setTimeout(stopVideo, 6000);
+          done = true;
+        }
+        if (event.data == YT.PlayerState.ENDED && done) {
+            fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
+    .then(response => response.json())
+    .then(data =>{
+        player.loadVideoById(data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0]); 
+      
+    })
+                  
+        }
+
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+  </body>
+</html>
