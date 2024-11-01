@@ -92,13 +92,12 @@ function playvid(){
         if (event.data == YT.PlayerState.ENDED) {
             playvid();
                   
-        }else{
-          dummyInput.focus();
         }
-
+        dummyInput.focus();
       }
       function stopVideo() {
         player.stopVideo();
+        dummyInput.focus();
       }
     </script>
   </body>
