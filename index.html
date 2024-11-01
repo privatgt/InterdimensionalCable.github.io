@@ -28,7 +28,11 @@
           videoId: data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0],
           playerVars: {
             'autoplay': 1,
-            'controls': 1
+            'controls': 1,
+             modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+            cc_lang_pref:"en"
         },
           events: {
             'onReady': onPlayerReady,
@@ -39,6 +43,7 @@
     });
         
       }
+      
 function playvid(){
    try {
     fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
@@ -50,6 +55,12 @@ function playvid(){
           playvid()
         }
       }
+      document.addEventListener('keydown', function(event) {
+    // Check if pressed key is a number
+    if (/^[0-9]$/.test(event.key)) {
+        playvid()
+    }
+});
       function playerErr(event){
         fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
     .then(response => response.json())
