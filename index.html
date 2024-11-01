@@ -26,15 +26,27 @@
           height: '390',
           width: '640',
           videoId: data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0],
+          playerVars: {
+            'autoplay': 1,
+            'controls': 1
+        },
           events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': playerErr
           }
         });
     });
         
       }
 
+      function playerErr(event){
+        fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
+    .then(response => response.json())
+    .then(data =>{
+        player.loadVideoById(data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0]); 
+    })
+      }
       function onPlayerReady(event) {
         event.target.playVideo();
         
