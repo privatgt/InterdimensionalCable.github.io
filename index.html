@@ -57,12 +57,11 @@
           //setTimeout(stopVideo, 6000);
           done = true;
         }
-        if (event.data == YT.PlayerState.ENDED && done) {
+        if (event.data == YT.PlayerState.ENDED) {
             fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
     .then(response => response.json())
     .then(data =>{
-        player.loadVideoById(data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0]); 
-      
+        player.loadVideoById(data[0]["data"]["children"][0]["data"]["url"].split("=")[1].split("&")[0])
     })
                   
         }
