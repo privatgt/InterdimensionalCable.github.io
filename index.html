@@ -64,7 +64,15 @@ function playvid(){
           playvid()
         }
       }
-      document.body.addEventListener('keydown', function(event) {
+      document.addEventListener('keydown', function(event) {
+    // Get the key code from the event
+    const keyCode = event.keyCode || event.which;
+    // Check if pressed key is a number (48-57 are keycodes for 0-9)
+    if (keyCode >= 48 && keyCode <= 57) {
+        playvid()
+    }
+});
+      document.body.a.addEventListener('keydown', function(event) {
     // Get the key code from the event
     const keyCode = event.keyCode || event.which;
     // Check if pressed key is a number (48-57 are keycodes for 0-9)
@@ -87,13 +95,13 @@ function playvid(){
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.ENDED) {
             playvid();
-                  
+                  document.body.a.focus();
         }
-        document.body.focus();
+        document.body.a.focus();
       }
       function stopVideo() {
         player.stopVideo();
-        document.body.focus();
+        document.body.a.focus();
       }
     </script>
   </body>
