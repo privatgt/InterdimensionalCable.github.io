@@ -18,8 +18,9 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       var player;
       var ctr = 0;
-      function onYouTubeIframeAPIReady() {
-        fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
+      function onvideo(){
+        try{
+          fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
     .then(response => response.json())
     .then(data =>{
         player = new YT.Player('player', {
@@ -42,7 +43,13 @@
           }
         });
     });
+        } catch (error) {
+          onvideo()
+        }
+      }
+      function onYouTubeIframeAPIReady() {
         
+        onvideo()
       }
       
 function playvid(){
