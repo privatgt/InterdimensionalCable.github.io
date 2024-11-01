@@ -71,14 +71,6 @@ function playvid(){
         playvid()
     }
 });
-      player.addEventListener('keydown', function(event) {
-    // Get the key code from the event
-    const keyCode = event.keyCode || event.which;
-    // Check if pressed key is a number (48-57 are keycodes for 0-9)
-    if (keyCode >= 48 && keyCode <= 57) {
-        playvid()
-    }
-});
       function playerErr(event){
         fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
     .then(response => response.json())
@@ -92,13 +84,11 @@ function playvid(){
       var done = false;
       
       function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          //setTimeout(stopVideo, 6000);
-          done = true;
-        }
         if (event.data == YT.PlayerState.ENDED) {
             playvid();
                   
+        }else{
+          document.focus();
         }
 
       }
