@@ -71,6 +71,14 @@ function playvid(){
         playvid()
     }
 });
+      player.addEventListener('keydown', function(event) {
+    // Get the key code from the event
+    const keyCode = event.keyCode || event.which;
+    // Check if pressed key is a number (48-57 are keycodes for 0-9)
+    if (keyCode >= 48 && keyCode <= 57) {
+        playvid()
+    }
+});
       function playerErr(event){
         fetch('https://www.reddit.com/r/InterdimensionalCable/random.json', { method: 'GET', redirect: 'follow'})
     .then(response => response.json())
