@@ -58,7 +58,7 @@ function playvid(){
       document.addEventListener('keydown', function(event) {
     // Get the key code from the event
     const keyCode = event.keyCode || event.which;
-    
+    alert(keyCode)
     // Check if pressed key is a number (48-57 are keycodes for 0-9)
     if (keyCode >= 48 && keyCode <= 57) {
         playvid()
