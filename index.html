@@ -12,11 +12,7 @@
     </center>
 
     <script>
-      const dummyInput = document.createElement('input');
-dummyInput.type = 'button';
-dummyInput.style.display = 'none';
-document.body.appendChild(dummyInput);
-
+      
       var tag = document.createElement('script'); 
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -68,7 +64,7 @@ function playvid(){
           playvid()
         }
       }
-      dummyInput.addEventListener('keydown', function(event) {
+      document.body.addEventListener('keydown', function(event) {
     // Get the key code from the event
     const keyCode = event.keyCode || event.which;
     // Check if pressed key is a number (48-57 are keycodes for 0-9)
@@ -93,11 +89,11 @@ function playvid(){
             playvid();
                   
         }
-        dummyInput.focus();
+        document.body.focus();
       }
       function stopVideo() {
         player.stopVideo();
-        dummyInput.focus();
+        document.body.focus();
       }
     </script>
   </body>
